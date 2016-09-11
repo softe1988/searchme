@@ -1,14 +1,13 @@
-jQuery ->
-  $('body').prepend('<div id="fb-root"></div>')
+$ ->
 
   $.ajax
-    url: "#{window.location.protocol}//connect.facebook.net/en_US/all.js"
+    url: "https://maps.googleapis.com/maps/api/js?key=Figaro.env.GMAPS_API_KEY"
     dataType: 'script'
     cache: true
 
 
 window.fbAsyncInit = ->
-  FB.init(appId: '972425912884517', cookie: true, status: true)
+  FB.init(appId: '972425912884517', cookie: true)
 
   $('#sign_in').click (e) ->
     e.preventDefault()
@@ -19,4 +18,5 @@ window.fbAsyncInit = ->
     FB.getLoginStatus (response) ->
       FB.logout() if response.authResponse
     true
+
 
